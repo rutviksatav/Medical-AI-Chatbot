@@ -25,9 +25,9 @@ def create_rag_chain(retriever, llm, prompt, query):
     result = rag_chain.invoke({"input": query})
 
     # Print the answer from the result
-    print(result['answer'])
+    answer = result['answer']
 
-    return rag_chain
+    return answer
 
 # Example usage
 # rag_chain = create_rag_chain(retriever, llm, prompt, "What is the definition of Acetaminophen?")

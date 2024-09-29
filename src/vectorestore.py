@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from langchain_chroma import Chroma
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
-def create_retriver(splitted_doc, api_key_env_var="GOOGLE_API_KEY", embedding_model="models/embedding-001", search_type="similarity", k=10):
+def create_retriever(splitted_doc, api_key_env_var="GOOGLE_API_KEY", embedding_model="models/embedding-001", search_type="similarity", k=10):
     """
     Sets up a Chroma vector store and retriever.
 

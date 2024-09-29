@@ -1,11 +1,20 @@
 from langchain_community.document_loaders import PyPDFLoader
-FILEPATH = "/workspaces/Medical-AI-Chatbot/data/Gale Encyclopedia of Medicine. Vol. 1. 2nd Edition ( PDFDrive ).pdf"
-def document_loader(PATH):
-    loader = PyPDFLoader(FILEPATH)
-    document = loader.load()
-    return document
+from typing import List
 
-doc = document_loader(PATH=FILEPATH)
-print(doc[1].page_content)
-        
-        
+def load_document(file_path):
+    """
+    Loads a PDF document and returns its content.
+
+    Parameters:
+        file_path (str): The path to the PDF file.
+
+    Returns:
+        List[dict]: A list of dictionaries containing the document's content.
+    """
+    try:
+        loader = PyPDFLoader(file_path)
+        document = loader.load()
+        return document
+    except Exception as e:
+        print(f"Error loading document from {file_path}: {e}")
+        return []
