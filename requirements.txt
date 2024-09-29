@@ -5,3 +5,8 @@ Flask==3.0.3
 langchain==0.3.1
 pypdf
 langchain-community
+langchain-google-genai
+langchainhub 
+langchain-openai 
+langchain-chroma 
+bs4
