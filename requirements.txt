@@ -3,3 +3,5 @@ sentence-transformers==3.1.1
 pinecone-client==5.0.1
 Flask==3.0.3
 langchain==0.3.1
+pypdf
+langchain-community
