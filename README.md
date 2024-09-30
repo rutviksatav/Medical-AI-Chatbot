@@ -1,75 +1,103 @@
-# Medical AI Chatbot
 
-This project aims to develop a Generative AI-based chatbot that provides medical information sourced from the **Gale Encyclopedia of Medicine (Vol. 1, 2nd Edition)**. The chatbot will serve as an assistant to answer general medical questions, offering helpful information based on the encyclopedia data.
+# GenAI Medical AI Chatbot
+
+Welcome to the **GenAI-based Medical AI Chatbot**! This project is designed as a Retrieval-Augmented Generation (RAG) application that leverages the power of the Google Gemini 1.5 Pro model. The chatbot provides intelligent and context-aware responses to medical inquiries, enhancing user experience with accurate and reliable information.
+
+## Table of Contents
+
+- [Project Description](#project-description)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [File Structure](#file-structure)
+- [Logging](#logging)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+## Project Description
+
+The GenAI Medical AI Chatbot uses advanced Generative AI techniques to assist users with their medical queries. By implementing the Google Gemini 1.5 Pro model, this application enables dynamic interactions and provides evidence-based answers. Its architecture follows a RAG approach, where the chatbot retrieves relevant information from a database and generates coherent responses, thereby improving the quality of interactions.
 
 ## Features
 
-- **Natural Language Understanding**: The chatbot will use advanced NLP techniques to understand and respond to user queries in conversational language.
-- **Medical Knowledge Base**: Powered by the extensive data from the **Gale Encyclopedia of Medicine**, the chatbot will provide accurate and reliable medical information.
-- **Generative Responses**: Using state-of-the-art generative AI models, the chatbot will offer informative responses based on user queries.
-- **Conversational Interface**: A user-friendly, conversational experience for asking medical questions, symptoms, treatments, and definitions.
-- **Contextual Understanding**: The bot retains context, enabling follow-up questions and more in-depth conversations.
-
-## Data Source
-
-The main data source for the chatbot is the **Gale Encyclopedia of Medicine (Vol. 1, 2nd Edition)**, which contains information on diseases, disorders, treatments, procedures, and medical terminology.
-
-## Project Structure
-
-- `data/`: Contains the medical data extracted from the **Gale Encyclopedia of Medicine**.
-- `model/`: Includes the Generative AI model (e.g., GPT-based model) for generating responses.
-- `src/`: Contains the source code for processing user queries, interfacing with the AI model, and generating responses.
-- `app.py`: The main file to run the chatbot application.
-- `requirements.txt`: List of dependencies and Python libraries required to run the project.
+- Interactive chatbot capable of answering medical questions.
+- Utilizes Google Gemini 1.5 Pro model for enhanced response generation.
+- Provides relevant medical information based on user queries.
+- Implements a RAG architecture for efficient information retrieval.
 
 ## Installation
 
-1. Clone this repository:
-    ```bash
-    git clone https://github.com/yourusername/medical-ai-chatbot.git
-    ```
-
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/genai-medical-chatbot.git
+   ```
 2. Navigate to the project directory:
-    ```bash
-    cd medical-ai-chatbot
-    ```
-
-3. Install the required dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4. Load the medical data from the **Gale Encyclopedia of Medicine**:
-    - Ensure the relevant files are in the `data/` directory.
-
-5. Run the chatbot:
-    ```bash
-    python app.py
-    ```
+   ```bash
+   cd genai-medical-chatbot/src
+   ```
+3. Install the required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ## Usage
 
-After starting the chatbot, you can ask medical-related questions such as:
+To start the chatbot, run the following command:
+```bash
+python main.py
+```
 
-- What is hypertension?
-- What are the symptoms of diabetes?
-- How is asthma treated?
-- Define pneumonia.
+You can then interact with the chatbot in your terminal or via the designated interface.
 
-The chatbot will respond with detailed medical information sourced from the encyclopedia.
+## File Structure
 
-## Model
+```
+genai-medical-chatbot/
+├── data/
+│   └── datafile              # Contains relevant data files for the chatbot
+├── src/
+│   ├── __pycache__/
+│   ├── app.log               # Log file for recording events and errors
+│   ├── chain.py              # Handles user interactions and conversation flow
+│   ├── loader.py             # Loads models and data required by the chatbot
+│   ├── log_config.py         # Configuration for logging system activity
+│   ├── main.py               # Entry point for the chatbot application
+│   ├── model.py              # Defines the AI model and its architecture
+│   ├── prompt.py             # Contains predefined prompts for generating responses
+│   ├── splitter.py           # Handles splitting of user input for processing
+│   └── vectorestore.py       # Manages storage and retrieval of vector representations of data
+├── requirements.txt           # Lists the required packages for the project
+└── README.md                  # Documentation for the project
+```
 
-This chatbot leverages a **Generative Pre-trained Transformer (GPT)** model for creating conversational, human-like responses. The model is fine-tuned on medical text extracted from the **Gale Encyclopedia of Medicine** to ensure that responses are relevant and accurate in the medical domain.
+### File Descriptions
+
+- `data/`: Directory containing data files used by the chatbot.
+- `src/__pycache__/`: Caches for compiled Python files for optimization.
+- `app.log`: Log file for capturing runtime events.
+- `chain.py`: Contains logic for handling user interactions and managing conversation flow.
+- `loader.py`: Responsible for loading models and data required by the chatbot.
+- `log_config.py`: Configuration for logging system activity.
+- `main.py`: Entry point for the chatbot application.
+- `model.py`: Defines the AI model and its architecture.
+- `prompt.py`: Contains predefined prompts for generating responses.
+- `splitter.py`: Handles splitting of user input for processing.
+- `vectorestore.py`: Manages storage and retrieval of vector representations of data.
+- `requirements.txt`: Lists all the necessary packages and their versions required to run the project.
+
+## Logging
+
+Logging is configured to record important events and errors in the `app.log` file. This helps in monitoring and debugging the application.
 
 ## Contributing
 
-Contributions are welcome! If you'd like to contribute to this project, please follow the guidelines:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bugfix.
-3. Submit a pull request with a detailed description of your changes.
+Contributions are welcome! Please feel free to submit a pull request or open an issue for any enhancements or bug fixes.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any questions or feedback, feel free to reach out to me at [your.email@example.com](mailto:your.email@example.com).
