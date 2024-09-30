@@ -30,11 +30,11 @@ The GenAI Medical AI Chatbot uses advanced Generative AI techniques to assist us
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/genai-medical-chatbot.git
+   git clone https://github.com/rutviksatav/Medical-AI-Chatbot.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd genai-medical-chatbot/src
+   cd Medical-AI-Chatbot/src
    ```
 3. Install the required packages:
    ```bash
@@ -53,7 +53,7 @@ You can then interact with the chatbot in your terminal or via the designated in
 ## File Structure
 
 ```
-genai-medical-chatbot/
+Medical-AI-Chatbot/
 ├── data/
 │   └── datafile              # Contains relevant data files for the chatbot
 ├── src/
@@ -76,13 +76,13 @@ genai-medical-chatbot/
 - `data/`: Directory containing data files used by the chatbot.
 - `src/__pycache__/`: Caches for compiled Python files for optimization.
 - `app.log`: Log file for capturing runtime events.
-- `chain.py`: Contains logic for handling user interactions and managing conversation flow.
-- `loader.py`: Responsible for loading models and data required by the chatbot.
+- `chain.py`: chain.py helps in creating langchain chain functionality
+- `loader.py`: Responsible for loading the data required by the chatbot.
 - `log_config.py`: Configuration for logging system activity.
 - `main.py`: Entry point for the chatbot application.
 - `model.py`: Defines the AI model and its architecture.
 - `prompt.py`: Contains predefined prompts for generating responses.
-- `splitter.py`: Handles splitting of user input for processing.
+- `splitter.py`: Handles splitting of documents for processing.
 - `vectorestore.py`: Manages storage and retrieval of vector representations of data.
 - `requirements.txt`: Lists all the necessary packages and their versions required to run the project.
 
@@ -100,4 +100,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-For any questions or feedback, feel free to reach out to me at [your.email@example.com](mailto:your.email@example.com).
+For any questions or feedback, feel free to reach out to me at [rutviksatav1@gmail.com](rutviksatav1@gmail.com).
