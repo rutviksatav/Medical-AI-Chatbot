@@ -2,22 +2,22 @@ from langchain_core.prompts import ChatPromptTemplate
 
 def create_chat_prompt(context_placeholder="{context}", input_placeholder="{input}"):
     """
-    Creates a ChatPromptTemplate for question-answering tasks.
+    Creates a ChatPromptTemplate for a Medical AI assistant that strictly answers only from the provided data.
 
     Args:
-        context_placeholder (str): Placeholder for the context to be injected into the prompt. Default is '{context}'.
+        context_placeholder (str): Placeholder for the retrieved context. Default is '{context}'.
         input_placeholder (str): Placeholder for the user's input. Default is '{input}'.
 
     Returns:
-        ChatPromptTemplate: Initialized ChatPromptTemplate for Q&A tasks.
+        ChatPromptTemplate: Configured ChatPromptTemplate for medical Q&A tasks.
     """
     system_prompt = (
-        "You are an assistant for question-answering tasks. "
-        "Use the following pieces of retrieved context to answer "
-        "the question. If you don't know the answer, say that you "
-        "don't know. Use three sentences maximum and keep the "
-        "answer concise."
-        "\n\n"
+        "You are a specialized AI assistant designed for medical question-answering. "
+        "You must strictly answer ONLY using the retrieved medical context provided to you. "
+        "DO NOT use any outside knowledge or make assumptions. If the retrieved context "
+        "does not contain enough information to answer the question, respond with:\n\n"
+        "'I'm sorry, but I couldn't find relevant information in the available data. "
+        "Please consult a medical professional for accurate advice.'\n\n"
         f"{context_placeholder}"
     )
 
@@ -29,5 +29,3 @@ def create_chat_prompt(context_placeholder="{context}", input_placeholder="{inpu
     )
 
     return prompt
-
-

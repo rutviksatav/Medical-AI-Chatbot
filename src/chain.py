@@ -25,6 +25,7 @@ def create_rag_chain(retriever, llm, prompt, query):
     result = rag_chain.invoke({"input": query})
 
     # Print the answer from the result
+    print("This is context:", result['context'])
     answer = result['answer']
 
     return answer

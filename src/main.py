@@ -12,9 +12,9 @@ from model import llm
 import log_config  # Use the new filename
 
 FILEPATH = r"/Users/rutvik/Developer/DS/Medical-AI-Chatbot/data/Gale Encyclopedia of Medicine. Vol. 1. 2nd Edition ( PDFDrive ).pdf"
-query = "what is Definition of Acetaminophen?"
+# query = "what is Definition of Acetaminophen?"
 
-def main():
+def main(query):
     logging.info("Application started.")
     try:
         # Load environment variables
@@ -23,7 +23,8 @@ def main():
 
         # Load document
         docs = load_document(FILEPATH)
-        docs = docs[:50]
+        print("Doc Lentgh:", len(docs))
+        docs = docs[:200]
         logging.info(f"Document loaded from {FILEPATH}.")
 
         # Split document
