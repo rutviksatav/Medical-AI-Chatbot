@@ -1,6 +1,6 @@
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-def split_document(doc, chunk_size=500, chunk_overlap=20):
+def split_document(doc, chunk_size=500, chunk_overlap=50):
     """
     Splits a document into smaller chunks using the RecursiveCharacterTextSplitter.
 
@@ -21,7 +21,5 @@ def split_document(doc, chunk_size=500, chunk_overlap=20):
 
     # Split the document into chunks
     splitted_doc = text_splitter.split_documents(doc)
-    
+
     return splitted_doc
-
-

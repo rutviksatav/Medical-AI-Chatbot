@@ -7,54 +7,35 @@ from vectorestore import create_retriever
 from prompt import create_chat_prompt
 from chain import create_rag_chain
 from model import llm
+import log_config  # Import logging configuration
 
-# Import logging configuration
-import log_config  # Use the new filename
-
+# Load environment variables once
+load_dotenv()
+# Load and preprocess document once
 FILEPATH = r"/Users/rutvik/Developer/DS/Medical-AI-Chatbot/data/Gale Encyclopedia of Medicine. Vol. 1. 2nd Edition ( PDFDrive ).pdf"
-# query = "what is Definition of Acetaminophen?"
+docs = load_document(FILEPATH)
+# docs = docs[:200]  # Limit document size if needed
+split_doc = split_document(docs)
+retriever = create_retriever(splitted_doc=split_doc)
+prompt = create_chat_prompt()
+model = llm()
+
+logging.info("All components initialized.")
 
 def main(query):
-    logging.info("Application started.")
+    """Handles user query and returns an answer."""
+    logging.info(f"User Query: {query}")
     try:
-        # Load environment variables
-        load_dotenv()
-        logging.info("Environment variables loaded.")
-
-        # Load document
-        docs = load_document(FILEPATH)
-        print("Doc Lentgh:", len(docs))
-        docs = docs[:200]
-        logging.info(f"Document loaded from {FILEPATH}.")
-
-        # Split document
-        split_doc = split_document(docs)
-        logging.info("Document split into sections.")
-
-        # Create retriever
-        retriever = create_retriever(splitted_doc=split_doc)
-        logging.info("Retriever created.")
-
-        # Create chat prompt
-        prompt = create_chat_prompt()
-        logging.info("Chat prompt created.")
-
-        # Initialize model
-        model = llm()
-        logging.info("Language model initialized.")
-
-        # Create answer using the RAG chain
+        # Use preloaded components
         answer = create_rag_chain(retriever=retriever, llm=model, prompt=prompt, query=query)
-        logging.info("Answer generated.")
-
-        # Print the answer
-        print(answer)  # Add this line to print the generated answer
-
+        logging.info(f"Answer: {answer}")
         return answer
     except Exception as e:
         logging.error(f"An error occurred: {e}")
     finally:
-        logging.info("Application finished.")
+        logging.info("Query processing finished.")
 
 if __name__ == "__main__":
+    # query = "What is the definition of Acetaminophen?"
+    # print(main(query))  # Example query'
     main()

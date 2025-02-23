@@ -1,6 +1,8 @@
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
-
+from langchain.chains import RetrievalQA
+import logging
+import re
 def create_rag_chain(retriever, llm, prompt, query):
     """
     Creates a Retrieval-Augmented Generation (RAG) chain for question answering,
@@ -15,20 +17,15 @@ def create_rag_chain(retriever, llm, prompt, query):
     Returns:
         rag_chain: The initialized RAG chain for question answering.
     """
-    # Create a question-answering chain using the provided LLM and prompt
-    question_answer_chain = create_stuff_documents_chain(llm, prompt)
 
-    # Create the retrieval chain using the retriever and question-answering chain
-    rag_chain = create_retrieval_chain(retriever, question_answer_chain)
+    combine_docs_chain = create_stuff_documents_chain(llm, prompt)
+    rag_chain = create_retrieval_chain(retriever, combine_docs_chain)
 
-    # Invoke the RAG chain with the provided query
-    result = rag_chain.invoke({"input": query})
-
-    # Print the answer from the result
-    print("This is context:", result['context'])
-    answer = result['answer']
-
-    return answer
+    answer = rag_chain.invoke({"input": query})
+    translated_text = re.sub(r'<think>.*?</think>\n\n', '', answer['answer'], flags=re.DOTALL)
+    # logging.info(f"Context: {answer['context']}")
+    logging.info(f"Answer: {translated_text}")
+    return translated_text
 
 # Example usage
 # rag_chain = create_rag_chain(retriever, llm, prompt, "What is the definition of Acetaminophen?")
